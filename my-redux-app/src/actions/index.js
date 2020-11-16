@@ -7,7 +7,7 @@ export const ANIME_FAIL = "ANIME_FAIL";
 export const getAnime = () => (dispatch) => () => {
   dispatch({ type: FETCH_ANIME_START });
   axios
-    .get("https://api.jikan.moe/v3/anime/30/characters_staff")
+    .get("https://api.jikan.moe/v3/anime/30/characters_staf")
     .then((res) =>
       dispatch({ type: ANIME_SUCCESS, payload: res.data.characters })
     )
