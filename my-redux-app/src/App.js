@@ -1,11 +1,9 @@
-/* import "./App.css"; */
+import "./App.css";
 import Characters from "./components/Characters";
 
 function App() {
   return (
-    <div
-    // className="App"
-    >
+    <div className="App">
       <Characters />
     </div>
   );
