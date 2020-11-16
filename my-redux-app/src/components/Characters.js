@@ -1,14 +1,22 @@
 import React from "react";
 import Character from "./Character";
+import { connect } from "react-redux";
+import { getAnime } from "../actions";
 
-const Characters = () => {
+const Characters = (props) => {
+  console.log("Props passed down to the Characters component: ", props);
   return (
     <div>
       <h2>This is the Characters component</h2>
-      <button>Show Characters</button>
+      <button onClick={props.getAnime()}>Show Characters</button>
       <Character />
     </div>
   );
 };
 
-export default Characters;
+const mapStateToProps = (state) => {
+  return {
+    characters: state.characters,
+  };
+};
+export default connect(mapStateToProps, { getAnime })(Characters);

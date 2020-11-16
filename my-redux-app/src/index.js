@@ -9,7 +9,9 @@ import { animeReducer } from "./reducers";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-const store = createStore(animeReducer, applyMiddleware(thunk, logger));
+const middleware = applyMiddleware(thunk, logger);
+
+const store = createStore(animeReducer, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
