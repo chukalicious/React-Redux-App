@@ -7,11 +7,16 @@ const Characters = (props) => {
   console.log("Props passed down to the Characters component: ", props);
   return (
     <div>
-      <h2>This is the Characters component</h2>
+      <h2>Neon Genesis Evangelion Characters</h2>
       <button onClick={props.getAnime()}>Show Characters</button>
-      {props.characters.map((char) => (
-        <Character key={char.mal_id} character={char} />
-      ))}
+
+      {props.isLoading === true ? (
+        <h3>Loading...</h3>
+      ) : (
+        props.characters.map((char) => (
+          <Character key={char.mal_id} character={char} />
+        ))
+      )}
     </div>
   );
 };
@@ -19,6 +24,7 @@ const Characters = (props) => {
 const mapStateToProps = (state) => {
   return {
     characters: state.characters,
+    isLoading: state.isLoading,
   };
 };
 export default connect(mapStateToProps, { getAnime })(Characters);
