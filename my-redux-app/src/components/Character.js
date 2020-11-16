@@ -1,9 +1,10 @@
 import React from "react";
 
-const Character = () => {
+const Character = (props) => {
+  console.log("props from passed down to the Character componet: ", props);
   return (
     <div>
-      <h3>This is the Character component</h3>
+      <h4>{props.character.name}</h4>
     </div>
   );
 };

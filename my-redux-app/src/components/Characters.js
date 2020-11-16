@@ -9,7 +9,9 @@ const Characters = (props) => {
     <div>
       <h2>This is the Characters component</h2>
       <button onClick={props.getAnime()}>Show Characters</button>
-      <Character />
+      {props.characters.map((char) => (
+        <Character key={char.mal_id} character={char} />
+      ))}
     </div>
   );
 };
