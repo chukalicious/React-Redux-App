@@ -2,9 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.character-card {
+  width: 50%;
+  background-color: plum;
+  margin: auto;
+  border-radius: 3px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
