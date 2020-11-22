@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import { animeReducer } from "./reducers";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const middleware = applyMiddleware(thunk, logger);
 
@@ -16,7 +17,9 @@ const store = createStore(animeReducer, middleware);
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")
