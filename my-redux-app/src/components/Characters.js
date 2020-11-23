@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Character from "./Character";
 import { connect } from "react-redux";
-import { getAnime } from "../actions";
+import { getCharacters } from "../actions";
+import axios from "axios";
 
 const Characters = (props) => {
   console.log("Props passed down to the Characters component: ", props);
+
+  const [characters, setCharacters] = useState([]);
+  console.log("characters: ", characters);
+
+  useEffect(() => {
+    axios
+      .get("https://api.jikan.moe/v3/anime/30/characters_staff")
+      .then((res) => {
+        setCharacters(res.data.characters);
+        props.getCharacters(res.data.characters);
+      })
+      .catch((err) => console.log(err.message));
+  }, []);
   return (
     <div>
-      <button onClick={props.getAnime()}>Show Characters</button>
-      {props.isLoading === true ? (
-        <h3>Loading...</h3>
-      ) : (
-        props.characters.map((char) => (
-          <Character key={char.mal_id} character={char} />
-        ))
-      )}
-      {props.error && <h2 style={{ color: "red" }}>Bad Request! 🙇🏻‍♀️</h2>}
+      {characters.map((char) => (
+        //try making the code below the link to the character, see what happens
+        <Character key={char.mal_id} character={char} />
+      ))}
     </div>
   );
 };
@@ -27,4 +36,4 @@ const mapStateToProps = (state) => {
     error: state.error,
   };
 };
-export default connect(mapStateToProps, { getAnime })(Characters);
+export default connect(mapStateToProps, { getCharacters })(Characters);

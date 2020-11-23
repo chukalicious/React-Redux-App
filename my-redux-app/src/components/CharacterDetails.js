@@ -4,7 +4,7 @@ const CharacterDetails = () => {
   return (
     <div>
       <h2>Character name: </h2>
-      <img></img>
+      <img src=""></img>
     </div>
   );
 };

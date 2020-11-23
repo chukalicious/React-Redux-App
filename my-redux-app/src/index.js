@@ -9,10 +9,11 @@ import { animeReducer } from "./reducers";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { BrowserRouter as Router } from "react-router-dom";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const middleware = applyMiddleware(thunk, logger);
 
-const store = createStore(animeReducer, middleware);
+const store = createStore(animeReducer, composeWithDevTools(middleware));
 
 ReactDOM.render(
   <Provider store={store}>

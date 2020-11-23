@@ -1,4 +1,9 @@
-import { FETCH_ANIME_START, ANIME_SUCCESS, ANIME_FAIL } from "../actions";
+import {
+  /* FETCH_ANIME_START,
+  ANIME_SUCCESS,
+  ANIME_FAIL, */
+  GET_CHARACTERS,
+} from "../actions";
 
 const initialState = {
   isLoading: false,
@@ -8,7 +13,7 @@ const initialState = {
 
 export const animeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ANIME_START:
+    /* case FETCH_ANIME_START:
       return {
         ...state,
         isLoading: true,
@@ -26,6 +31,11 @@ export const animeReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         isLoading: false,
+      }; */
+    case GET_CHARACTERS:
+      return {
+        ...state,
+        characters: action.payload,
       };
     default:
       return state;
