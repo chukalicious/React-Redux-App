@@ -35,7 +35,7 @@ export const animeReducer = (state = initialState, action) => {
     case GET_CHARACTERS:
       return {
         ...state,
-        characters: action.payload,
+        characters: [...action.payload],
       };
     default:
       return state;

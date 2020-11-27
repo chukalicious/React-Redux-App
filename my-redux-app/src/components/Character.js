@@ -1,27 +1,20 @@
 import React from "react";
-import { Link, Route, useParams, Switch } from "react-router-dom";
+import { Link, Route, Switch, useParams } from "react-router-dom";
 import CharacterDetails from "./CharacterDetails";
 
 const Character = (props) => {
-  console.log("character comp props: ", props);
-  const { character } = props.character;
-  console.log("attempt at deconstruction the object: ", props);
-  const params = useParams();
-  console.log(params, "params");
+  console.log("Props passed down to the Character component: ", props);
 
+  const params = useParams();
+  console.log("params: ", params);
   return (
     <>
-      <Link to={`/character_details/${props.character.mal_id}`}>
-        <div className="character-card">
-          <h4>{props.character.name}</h4>
-          <img src={props.character.image_url} />
-        </div>
-      </Link>
-      <Route
-        exact
-        path={`/character_details/${props.character.mal_id}`}
-        render={() => {}}
-      />
+      <div className="character-card">
+        <h4>{props.character.name}</h4>
+        <img src={props.character.image_url} />
+      </div>
+
+      {/* <CharacterDetails character={props.character} /> */}
     </>
   );
 };
