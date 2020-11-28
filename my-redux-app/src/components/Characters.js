@@ -7,11 +7,6 @@ import axios from "axios";
 import { Link, Route } from "react-router-dom";
 
 const Characters = (props) => {
-  console.log(
-    "Props passed down to the Characters component: ",
-    props.characters
-  );
-
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/characters_staff")

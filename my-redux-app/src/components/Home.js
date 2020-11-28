@@ -4,7 +4,6 @@ import { getPictures } from "../actions";
 import axios from "axios";
 
 const Home = (props) => {
-  console.log("props inside the Home component: ", props);
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/pictures")
@@ -12,9 +11,9 @@ const Home = (props) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div key={Date.now()}>
+    <div>
       {props.pictures.map((pic) => (
-        <img src={pic.small} />
+        <img src={pic.small} key={Date.now()} />
       ))}
     </div>
   );

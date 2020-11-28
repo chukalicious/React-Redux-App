@@ -8,7 +8,6 @@ import Home from "./components/Home";
 import Episodes from "./components/Episodes";
 
 function App(props) {
-  console.log("Props in App: ", props);
   return (
     <div className="App">
       <Heading />

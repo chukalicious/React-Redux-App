@@ -4,7 +4,6 @@ import axios from "axios";
 import { getEpisodes } from "../actions";
 
 const Episodes = (props) => {
-  console.log("Porps in the Episodes component: ", props);
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/episodes")
