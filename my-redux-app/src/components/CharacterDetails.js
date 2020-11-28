@@ -1,11 +1,14 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const CharacterDetails = (props) => {
-  console.log("Props in CharacterDetails component: ", props.character);
+  console.log("Props in CharacterDetails component: ", props.details);
+  const params = useParams();
+  console.log("params: ", params);
 
   return (
     <div>
-      <h2>Character Details: This is the details component</h2>
+      <h2>{props.details.name} details component</h2>
     </div>
   );
 };

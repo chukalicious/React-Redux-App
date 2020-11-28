@@ -1,28 +1,29 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import Characters from "./components/Characters";
 import Heading from "./components/Heading";
+import CharacterCard from "./components/CharacterCard";
 import CharacterDetails from "./components/CharacterDetails";
 import Home from "./components/Home";
+import Episodes from "./components/Episodes";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Heading />
       <Switch>
-        <Route path="/characters" render={() => <Characters />} />
+        <Route path="/episodes" render={(props) => <Episodes />} />
+        <Route path="/characters" render={(props) => <Characters />} />
         <Route path="/" component={Home} />
       </Switch>
-
-      {/* <Switch> */}
-      {/* <Route path="/characters/:id">
-        <CharacterDetails />
-      </Route> */}
-      {/* <Route path="/characters/" render={(props) => <Characters />} /> */}
-      {/* <Route path="/" component={App} /> */}
-      {/* </Switch> */}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    characters: state.characters,
+  };
+};
+export default connect(mapStateToProps, {})(App);

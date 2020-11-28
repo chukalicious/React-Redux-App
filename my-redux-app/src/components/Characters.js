@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
-import Character from "./Character";
+import CharacterCard from "./CharacterCard";
+import CharacterDetails from "./CharacterDetails";
 import { connect } from "react-redux";
 import { getCharacters } from "../actions";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 const Characters = (props) => {
-  console.log("Props passed down to the Characters component: ", props);
+  console.log(
+    "Props passed down to the Characters component: ",
+    props.characters
+  );
 
   useEffect(() => {
     axios
@@ -19,10 +23,21 @@ const Characters = (props) => {
 
   return (
     <div>
+      <h2>This is the Characters component</h2>
       {props.characters.map((character) => (
-        <Link to={`/charcters/${character.mal_id}`}>
-          <Character key={character.mal_id} character={character} />
-        </Link>
+        <>
+          <Link to={`/characters/${character.mal_id}`}>
+            <CharacterCard
+              key={character.mal_id}
+              name={character.name}
+              image={character.image_url}
+              data={character}
+            />
+          </Link>
+          <Route exact path="/characters/:id">
+            <CharacterDetails details={character} />
+          </Route>
+        </>
       ))}
     </div>
   );
