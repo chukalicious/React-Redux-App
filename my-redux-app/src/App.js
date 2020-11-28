@@ -3,16 +3,19 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Characters from "./components/Characters";
 import Heading from "./components/Heading";
-import CharacterCard from "./components/CharacterCard";
 import CharacterDetails from "./components/CharacterDetails";
 import Home from "./components/Home";
 import Episodes from "./components/Episodes";
 
 function App(props) {
+  console.log("Props in App: ", props);
   return (
     <div className="App">
       <Heading />
       <Switch>
+        <Route exact path="/characters/:id">
+          <CharacterDetails details={props.characters} />
+        </Route>
         <Route path="/episodes" render={(props) => <Episodes />} />
         <Route path="/characters" render={(props) => <Characters />} />
         <Route path="/" component={Home} />

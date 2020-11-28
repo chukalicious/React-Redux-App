@@ -6,12 +6,18 @@ const CharacterDetails = (props) => {
   const params = useParams();
   console.log("params: ", params);
 
+  const details = props.details.find(
+    (character) => character.mal_id === Number(params.id)
+  );
+  console.log("props.details", details);
+
   return (
     <div>
-      <h2>{props.details.name} details component</h2>
-      <p>Role: {props.details.role}</p>
+      <h2>{details.name} details component</h2>
+      <img src={details.image_url} />
+      <h4>Role: {details.role}</h4>
       <p>Voiced By: </p>
-      {props.details.voice_actors.map((voice) => (
+      {details.voice_actors.map((voice) => (
         <p>{voice.name}</p>
       ))}
     </div>
