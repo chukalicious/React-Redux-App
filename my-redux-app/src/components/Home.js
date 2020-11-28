@@ -12,8 +12,8 @@ const Home = (props) => {
   }, []);
   return (
     <div>
-      {props.pictures.map((pic) => (
-        <img src={pic.small} key={Date.now()} />
+      {props.pictures.map((pic, index) => (
+        <img src={pic.small} key={index} />
       ))}
     </div>
   );

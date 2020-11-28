@@ -19,8 +19,8 @@ const CharacterDetails = (props) => {
       <img src={details.image_url} />
       <h4>Role: {details.role}</h4>
       <p>Voiced By: </p>
-      {details.voice_actors.map((voice) => (
-        <p>
+      {details.voice_actors.map((voice, index) => (
+        <p key={index}>
           {voice.name} (<strong>{voice.language}</strong>)
         </p>
       ))}

@@ -6,6 +6,7 @@ import { getEpisodes } from "../actions";
 
 const Episodes = (props) => {
   const history = useHistory();
+
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/episodes")
@@ -16,8 +17,9 @@ const Episodes = (props) => {
     <div>
       <h3>Episodes</h3>
       <button onClick={() => history.push("/home")}>Go back to home</button>
-      {props.episodes.map((episode) => (
-        <div key={Date.now()}>
+
+      {props.episodes.map((episode, index) => (
+        <div key={index}>
           <h3>
             Episode #:{episode.episode_id} {episode.title}
           </h3>

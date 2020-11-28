@@ -20,8 +20,8 @@ const Characters = (props) => {
   return (
     <div>
       <button onClick={() => history.goBack()}> Go Back </button>
-      {props.characters.map((character) => (
-        <>
+      {props.characters.map((character, index) => (
+        <div key={index}>
           <Link to={`/characters/${character.mal_id}`}>
             <CharacterCard
               key={character.mal_id}
@@ -32,7 +32,7 @@ const Characters = (props) => {
           <Route exact path="/characters/:id">
             <CharacterDetails details={character} />
           </Route>
-        </>
+        </div>
       ))}
     </div>
   );
