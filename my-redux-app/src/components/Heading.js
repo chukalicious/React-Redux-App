@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Heading = () => {
   return (
     <div>
-      <h2>Neon Genesis Evangelion Characters</h2>
+      <h2>Neon Genesis Evangelion</h2>
       <Link to="/">
         <div>Home</div>
       </Link>

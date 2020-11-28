@@ -3,11 +3,13 @@ import {
   ANIME_SUCCESS,
   ANIME_FAIL, */
   GET_CHARACTERS,
+  GET_PICTURES,
 } from "../actions";
 
 const initialState = {
   isLoading: false,
   characters: [],
+  pictures: [],
   error: "",
 };
 
@@ -36,6 +38,11 @@ export const animeReducer = (state = initialState, action) => {
       return {
         ...state,
         characters: [...action.payload],
+      };
+    case GET_PICTURES:
+      return {
+        ...state,
+        pictures: [...action.payload],
       };
     default:
       return state;

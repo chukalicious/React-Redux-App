@@ -2,6 +2,7 @@
 export const ANIME_SUCCESS = "ANIME_SUCCESS";
 export const ANIME_FAIL = "ANIME_FAIL"; */
 export const GET_CHARACTERS = "GET_CHARACTERS";
+export const GET_PICTURES = "GET_PICTURES";
 
 /* export const getAnime = () => (dispatch) => () => {
   dispatch({ type: FETCH_ANIME_START });
@@ -17,5 +18,12 @@ export const getCharacters = (characters) => {
   return {
     type: GET_CHARACTERS,
     payload: characters,
+  };
+};
+
+export const getPictures = (pictures) => {
+  return {
+    type: GET_PICTURES,
+    payload: pictures,
   };
 };

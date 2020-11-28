@@ -23,7 +23,6 @@ const Characters = (props) => {
 
   return (
     <div>
-      <h2>This is the Characters component</h2>
       {props.characters.map((character) => (
         <>
           <Link to={`/characters/${character.mal_id}`}>
@@ -31,7 +30,6 @@ const Characters = (props) => {
               key={character.mal_id}
               name={character.name}
               image={character.image_url}
-              data={character}
             />
           </Link>
           <Route exact path="/characters/:id">

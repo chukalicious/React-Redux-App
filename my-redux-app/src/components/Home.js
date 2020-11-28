@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getPictures } from "../actions";
+import axios from "axios";
 
-const Home = () => {
+const Home = (props) => {
+  console.log("props inside the Home component: ", props);
+  useEffect(() => {
+    axios
+      .get("https://api.jikan.moe/v3/anime/30/pictures")
+      .then((res) => props.getPictures(res.data.pictures))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
-      <h2>This is the Home component</h2>
+      {props.pictures.map((pic) => (
+        <img src={pic.small} />
+      ))}
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    pictures: state.pictures,
+  };
+};
+
+export default connect(mapStateToProps, { getPictures })(Home);
