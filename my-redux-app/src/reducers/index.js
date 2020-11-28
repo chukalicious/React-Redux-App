@@ -4,12 +4,14 @@ import {
   ANIME_FAIL, */
   GET_CHARACTERS,
   GET_PICTURES,
+  GET_EPISODES,
 } from "../actions";
 
 const initialState = {
   isLoading: false,
   characters: [],
   pictures: [],
+  episodes: [],
   error: "",
 };
 
@@ -43,6 +45,11 @@ export const animeReducer = (state = initialState, action) => {
       return {
         ...state,
         pictures: [...action.payload],
+      };
+    case GET_EPISODES:
+      return {
+        ...state,
+        episodes: [...action.payload],
       };
     default:
       return state;

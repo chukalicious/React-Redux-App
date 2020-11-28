@@ -16,7 +16,9 @@ const CharacterDetails = (props) => {
       <h4>Role: {details.role}</h4>
       <p>Voiced By: </p>
       {details.voice_actors.map((voice) => (
-        <p>{voice.name}</p>
+        <p>
+          {voice.name} (<strong>{voice.language}</strong>)
+        </p>
       ))}
     </div>
   );

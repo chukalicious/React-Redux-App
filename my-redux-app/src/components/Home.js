@@ -12,7 +12,7 @@ const Home = (props) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <div key={Date.now()}>
       {props.pictures.map((pic) => (
         <img src={pic.small} />
       ))}

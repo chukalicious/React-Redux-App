@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { getEpisodes } from "../actions";
 
-const Episodes = () => {
+const Episodes = (props) => {
+  console.log("Porps in the Episodes component: ", props);
+  useEffect(() => {
+    axios
+      .get("https://api.jikan.moe/v3/anime/30/episodes")
+      .then((res) => props.getEpisodes(res.data.episodes))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
-      <h2>This is the Episodes component</h2>
+      <h3>Episodes</h3>
+      {props.episodes.map((episode) => (
+        <div key={Date.now()}>
+          <h3>
+            Episode #:{episode.episode_id} {episode.title}
+          </h3>
+          <h4>{episode.title_japanese}</h4>
+          <p>Air Date: {episode.aired}</p>
+          <p>
+            <strong>Discuss it here:</strong>{" "}
+            <a href={episode.forum_url} target="_blank">
+              {episode.forum_url}
+            </a>
+          </p>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Episodes;
+const mapStateToProps = (state) => {
+  return {
+    episodes: state.episodes,
+  };
+};
+
+export default connect(mapStateToProps, { getEpisodes })(Episodes);
