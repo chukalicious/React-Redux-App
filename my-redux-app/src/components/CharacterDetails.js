@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const CharacterDetails = (props) => {
   const params = useParams();
@@ -8,9 +8,13 @@ const CharacterDetails = (props) => {
   const details = props.details.find(
     (character) => character.mal_id === Number(params.id)
   );
+  const history = useHistory();
 
   return (
     <div>
+      <button onClick={() => history.push("/characters")}>
+        Back to Characters
+      </button>
       <h2>{details.name} Details: </h2>
       <img src={details.image_url} />
       <h4>Role: {details.role}</h4>
@@ -20,6 +24,7 @@ const CharacterDetails = (props) => {
           {voice.name} (<strong>{voice.language}</strong>)
         </p>
       ))}
+      <button onClick={() => history.push("/home")}>Back to Home</button>
     </div>
   );
 };

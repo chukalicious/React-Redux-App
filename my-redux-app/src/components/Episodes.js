@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { getEpisodes } from "../actions";
 
 const Episodes = (props) => {
+  const history = useHistory();
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/episodes")
@@ -13,6 +15,7 @@ const Episodes = (props) => {
   return (
     <div>
       <h3>Episodes</h3>
+      <button onClick={() => history.push("/home")}>Go back to home</button>
       {props.episodes.map((episode) => (
         <div key={Date.now()}>
           <h3>

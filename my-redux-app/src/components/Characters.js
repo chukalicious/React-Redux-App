@@ -4,9 +4,10 @@ import CharacterDetails from "./CharacterDetails";
 import { connect } from "react-redux";
 import { getCharacters } from "../actions";
 import axios from "axios";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
 
 const Characters = (props) => {
+  const history = useHistory();
   useEffect(() => {
     axios
       .get("https://api.jikan.moe/v3/anime/30/characters_staff")
@@ -18,6 +19,7 @@ const Characters = (props) => {
 
   return (
     <div>
+      <button onClick={() => history.goBack()}> Go Back </button>
       {props.characters.map((character) => (
         <>
           <Link to={`/characters/${character.mal_id}`}>
